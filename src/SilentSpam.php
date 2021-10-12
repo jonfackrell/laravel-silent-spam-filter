@@ -19,7 +19,7 @@ class SilentSpam
     public function isSpam($message)
     {
         foreach (array_merge(config('silentspam.blacklist') ?? [], $this->blacklist) as $keyword) {
-            if (preg_match("/{$keyword}/i", $message)) {
+            if (preg_match("/\b{$keyword}\b/i", $message)) {
                 return true;
             }
         }
